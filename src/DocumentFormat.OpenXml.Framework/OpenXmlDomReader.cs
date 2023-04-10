@@ -284,6 +284,24 @@ namespace DocumentFormat.OpenXml
         }
 
         /// <inheritdoc/>
+        public override bool ReadLastChild()
+        {
+            ThrowIfObjectDisposed();
+            bool result = MoveToLastChild();
+
+            if (result && !ReadMiscNodes)
+            {
+                // skip miscellaneous node
+                while (result && IsMiscNode)
+                {
+                    result = MoveToNextSibling();
+                }
+            }
+
+            return result;
+        }
+
+        /// <inheritdoc/>
         public override bool ReadNextSibling()
         {
             ThrowIfObjectDisposed();
@@ -425,6 +443,48 @@ namespace DocumentFormat.OpenXml
             var element = _elementStack.Peek();
 
             if (element.FirstChild is OpenXmlElement child)
+            {
+                _elementStack.Push(child);
+                if (child is OpenXmlMiscNode)
+                {
+                    _elementState = ElementState.MiscNode;
+                }
+                else
+                {
+                    _elementState = ElementState.Start;
+                }
+
+                return true;
+            }
+            else
+            {
+                _elementState = ElementState.End;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Move to last child
+        /// </summary>
+        /// <returns>true if the last child element was read successfully; false if there are no child elements to read. </returns>
+        /// <remarks>Only can be called on element start. Current will move to the end tag if no child element.</remarks>
+        private bool MoveToLastChild()
+        {
+            if (_elementState == ElementState.EOF)
+            {
+                return false;
+            }
+
+            ThrowIfNull();
+
+            if (_elementState != ElementState.Start)
+            {
+                return false;
+            }
+
+            var element = _elementStack.Peek();
+
+            if (element.LastChild is not null && element?.LastChild is OpenXmlElement child)
             {
                 _elementStack.Push(child);
                 if (child is OpenXmlMiscNode)

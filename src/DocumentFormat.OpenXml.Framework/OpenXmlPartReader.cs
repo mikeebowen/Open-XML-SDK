@@ -896,5 +896,10 @@ namespace DocumentFormat.OpenXml
                 throw new InvalidOperationException(ExceptionMessages.ReaderInEofState);
             }
         }
+
+        public override bool ReadLastChild()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -203,6 +203,13 @@ namespace DocumentFormat.OpenXml
         public abstract bool ReadFirstChild();
 
         /// <summary>
+        /// Moves to read the last child element.
+        /// </summary>
+        /// <returns>Returns true if the first last element was read successfully; false if there are no child elements to read. </returns>
+        /// <remarks>At the current node, the reader will move to the end tag if there is no child element.</remarks>
+        public abstract bool ReadLastChild();
+
+        /// <summary>
         /// Moves to read the next sibling element.
         /// </summary>
         /// <returns>Returns true if the next sibling element was read successfully; false if there are no more sibling elements to read. </returns>

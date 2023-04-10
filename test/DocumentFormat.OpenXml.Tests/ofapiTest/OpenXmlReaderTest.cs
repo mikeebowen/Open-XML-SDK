@@ -65,6 +65,37 @@ namespace DocumentFormat.OpenXml.Tests
             Assert.Equal("Run 2.", (run.LastChild as Text).Text);
 
             targetReader.Close();
+
+            targetReader = OpenXmlReader.Create(para);
+            targetReader.Read();
+
+            moved = targetReader.Read(); // read to <w:r>
+
+            Assert.True(moved);
+            Assert.False(targetReader.EOF);
+            Assert.NotNull(targetReader.Attributes);
+            Assert.Empty(targetReader.Attributes);
+            Assert.False(targetReader.HasAttributes);
+            Assert.True(targetReader.IsStartElement);
+            Assert.False(targetReader.IsEndElement);
+            Assert.False(targetReader.IsMiscNode);
+            Assert.True(string.IsNullOrEmpty(targetReader.GetText()));
+            Assert.Equal(typeof(Run), targetReader.ElementType);
+
+            moved = targetReader.ReadLastChild(); // read to <w:t>
+
+            Assert.True(moved);
+            Assert.False(targetReader.EOF);
+            Assert.NotNull(targetReader.Attributes);
+            Assert.Empty(targetReader.Attributes);
+            Assert.True(targetReader.IsStartElement);
+            Assert.False(targetReader.IsEndElement);
+            Assert.False(targetReader.IsMiscNode);
+            Assert.Equal(typeof(Text), targetReader.ElementType);
+            Assert.False(string.IsNullOrEmpty(targetReader.GetText()));
+            Assert.Equal("Run 2.", targetReader.GetText());
+
+            targetReader.Dispose();
         }
 
         /// <summary>
@@ -130,6 +161,36 @@ namespace DocumentFormat.OpenXml.Tests
                 Assert.False(reader.EOF);
 
                 var moved = reader.Read();
+                moved = reader.ReadLastChild();
+                Assert.True(moved);
+                Assert.True(reader.IsStartElement);
+                Assert.False(reader.IsEndElement);
+                Assert.False(reader.IsMiscNode);
+                Assert.False(reader.EOF);
+                Assert.Equal(1, reader.Depth);
+                Assert.Equal("p", reader.LocalName);
+
+                moved = reader.ReadNextSibling();
+                Assert.False(moved); // no more sibling
+                Assert.True(reader.IsEndElement); // should on Body end now.
+                Assert.False(reader.IsStartElement);
+                Assert.False(reader.IsMiscNode);
+                Assert.False(reader.EOF);
+                Assert.Equal(0, reader.Depth);
+                Assert.Equal("body", reader.LocalName);
+
+                // ReadNextSibling on root end
+                moved = reader.ReadNextSibling();
+                Assert.False(moved);
+                Assert.True(reader.EOF); // should be EOF now.
+            }
+
+            // ======== new test with a new reader ========
+            using (var reader = OpenXmlReader.Create(body))
+            {
+                Assert.False(reader.EOF);
+
+                var moved = reader.Read();
 
                 // bug #248145
                 // call Skip on root start
@@ -164,7 +225,58 @@ namespace DocumentFormat.OpenXml.Tests
                 Assert.False(reader.EOF);
 
                 var moved = reader.Read();
+                moved = reader.ReadLastChild();
+
+                reader.Skip();
+                Assert.True(reader.IsEndElement); // should on Body end now.
+                Assert.False(reader.IsStartElement);
+                Assert.False(reader.IsMiscNode);
+                Assert.False(reader.EOF);
+                Assert.Equal(0, reader.Depth);
+                Assert.Equal("body", reader.LocalName);
+
+                // call Skip on root end
+                reader.Skip();
+                Assert.True(reader.EOF);
+            }
+
+                // ======== new test with a new reader ========
+                using (var reader = OpenXmlReader.Create(body))
+            {
+                Assert.False(reader.EOF);
+
+                var moved = reader.Read();
                 moved = reader.ReadFirstChild();
+
+                reader.Skip();
+
+                // call Read on root end
+                moved = reader.Read();
+                Assert.False(moved);
+                Assert.True(reader.EOF);
+
+                // additional operations should return false.
+                moved = reader.Read();
+                Assert.False(moved);
+
+                moved = reader.ReadFirstChild();
+                Assert.False(moved);
+
+                moved = reader.ReadLastChild();
+                Assert.False(moved);
+
+                moved = reader.ReadNextSibling();
+                Assert.False(moved);
+
+                reader.Skip();
+            }
+
+            using (var reader = OpenXmlReader.Create(body))
+            {
+                Assert.False(reader.EOF);
+
+                var moved = reader.Read();
+                moved = reader.ReadLastChild();
 
                 reader.Skip();
 
@@ -268,6 +380,44 @@ namespace DocumentFormat.OpenXml.Tests
                 Assert.Equal(string.Empty, reader.NamespaceUri);
             }
 
+            // test case: for ReadLastChild
+            Body body2 = new Body(new Paragraph(new ParagraphProperties(), new Run(new Text("test2"))));
+            body2.AppendChild(new OpenXmlMiscNode(System.Xml.XmlNodeType.Comment, "<!-- end body -->"));
+
+            using (var reader = OpenXmlReader.Create(body2, true)) // read misc nodes
+            {
+                Assert.False(reader.EOF);
+
+                var moved = reader.Read();
+                Assert.False(reader.EOF);
+
+                moved = reader.ReadLastChild();
+                Assert.True(moved);
+                Assert.False(reader.EOF);
+                Assert.Equal(1, reader.Depth);
+                Assert.False(reader.IsStartElement);
+                Assert.False(reader.IsEndElement);
+                Assert.True(reader.IsMiscNode);
+                Assert.Equal("#comment", reader.LocalName);
+
+                Assert.Equal(string.Empty, reader.Prefix);
+                Assert.Equal(string.Empty, reader.NamespaceUri);
+            }
+
+            // test case: ReadLastChild should return end tag if now children are preseng
+            var p = new Paragraph();
+
+            using (var reader = OpenXmlReader.Create(p))
+            {
+                Assert.False(reader.EOF);
+
+                reader.Read();
+
+                var moved = reader.ReadLastChild();
+                Assert.False(moved);
+                Assert.True(reader.IsEndElement);
+
+            }
             // test case: root element is misc node
             using (var reader = OpenXmlReader.Create(new OpenXmlMiscNode(System.Xml.XmlNodeType.ProcessingInstruction, "<?pi test?>"), true))
             {
