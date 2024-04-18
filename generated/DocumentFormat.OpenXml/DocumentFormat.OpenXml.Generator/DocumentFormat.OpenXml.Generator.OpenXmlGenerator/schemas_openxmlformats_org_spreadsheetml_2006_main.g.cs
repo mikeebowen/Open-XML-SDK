@@ -30507,7 +30507,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
     /// <remark>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
-    ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.TableColumnExtensionList" /> <c>&lt;x:extLst></c></description></item>
+    ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.ExtensionList" /> <c>&lt;x:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.CalculatedColumnFormula" /> <c>&lt;x:calculatedColumnFormula></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.TotalsRowFormula" /> <c>&lt;x:totalsRowFormula></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.XmlColumnProperties" /> <c>&lt;x:xmlColumnPr></c></description></item>
@@ -30547,7 +30547,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>The unique identifier of the table field</para>
+        /// <para>Table Field Id</para>
         /// <para>Represents the following attribute in the schema: id</para>
         /// </summary>
         public UInt32Value? Id
@@ -30557,20 +30557,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Unique ID (GUID form) of the table field, this property is only available in Office 2019 and later.</para>
-        /// <para>Represents the following attribute in the schema: xr3:uid</para>
-        /// </summary>
-        /// <remark>
-        /// xmlns:xr3=http://schemas.microsoft.com/office/spreadsheetml/2016/revision3
-        /// </remark>
-        public StringValue? Uid
-        {
-            get => GetAttribute<StringValue>();
-            set => SetAttribute(value);
-        }
-
-        /// <summary>
-        /// <para>The unique name of the table field</para>
+        /// <para>Unique Name</para>
         /// <para>Represents the following attribute in the schema: uniqueName</para>
         /// </summary>
         public StringValue? UniqueName
@@ -30580,7 +30567,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>The unique caption of the table field</para>
+        /// <para>Column name</para>
         /// <para>Represents the following attribute in the schema: name</para>
         /// </summary>
         public StringValue? Name
@@ -30590,7 +30577,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Aggregation to show in the Totals Row cell</para>
+        /// <para>Totals Row Function</para>
         /// <para>Represents the following attribute in the schema: totalsRowFunction</para>
         /// </summary>
         public EnumValue<DocumentFormat.OpenXml.Spreadsheet.TotalsRowFunctionValues>? TotalsRowFunction
@@ -30600,7 +30587,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>String to show in the Totals Row cell. Requires totalsRowFunction="none"</para>
+        /// <para>Totals Row Label</para>
         /// <para>Represents the following attribute in the schema: totalsRowLabel</para>
         /// </summary>
         public StringValue? TotalsRowLabel
@@ -30610,7 +30597,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para> The query Table field ID corresponding to this Table column</para>
+        /// <para>Query Table Field Id</para>
         /// <para>Represents the following attribute in the schema: queryTableFieldId</para>
         /// </summary>
         public UInt32Value? QueryTableFieldId
@@ -30620,7 +30607,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Header row cell format tag</para>
+        /// <para>Header Row Cell Format Id</para>
         /// <para>Represents the following attribute in the schema: headerRowDxfId</para>
         /// </summary>
         public UInt32Value? HeaderRowDifferentialFormattingId
@@ -30630,7 +30617,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Data and insert row cell format tag</para>
+        /// <para>Data and Insert Row Format Id</para>
         /// <para>Represents the following attribute in the schema: dataDxfId</para>
         /// </summary>
         public UInt32Value? DataFormatId
@@ -30640,7 +30627,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Totals row cell format tag</para>
+        /// <para>Totals Row Format Id</para>
         /// <para>Represents the following attribute in the schema: totalsRowDxfId</para>
         /// </summary>
         public UInt32Value? TotalsRowDifferentialFormattingId
@@ -30650,7 +30637,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Header cell cached style name</para>
+        /// <para>Header Row Cell Style</para>
         /// <para>Represents the following attribute in the schema: headerRowCellStyle</para>
         /// </summary>
         public StringValue? HeaderRowCellStyle
@@ -30660,7 +30647,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Data cell style name</para>
+        /// <para>Data Area Style Name</para>
         /// <para>Represents the following attribute in the schema: dataCellStyle</para>
         /// </summary>
         public StringValue? DataCellStyle
@@ -30670,7 +30657,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Totals row cell style name</para>
+        /// <para>Totals Row Style Name</para>
         /// <para>Represents the following attribute in the schema: totalsRowCellStyle</para>
         /// </summary>
         public StringValue? TotalsRowCellStyle
@@ -30683,7 +30670,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         {
             base.ConfigureMetadata(builder);
             builder.SetSchema("x:tableColumn");
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.TableColumnExtensionList>();
+            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
             builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.CalculatedColumnFormula>();
             builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.TotalsRowFormula>();
             builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.XmlColumnProperties>();
@@ -30691,11 +30678,6 @@ namespace DocumentFormat.OpenXml.Spreadsheet
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
                     aBuilder.AddValidator(RequiredValidator.Instance);
-                })
-                .AddAttribute("xr3:uid", a => a.Uid, aBuilder =>
-                {
-                    aBuilder.AddValidator(new OfficeVersionValidator(FileFormatVersions.Office2019));
-                    aBuilder.AddValidator(new StringValidator() { Pattern = ("\\{[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\\}") });
                 })
                 .AddAttribute("uniqueName", a => a.UniqueName)
                 .AddAttribute("name", a => a.Name, aBuilder =>
@@ -30716,7 +30698,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
                 new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.CalculatedColumnFormula), 0, 1),
                 new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.TotalsRowFormula), 0, 1),
                 new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.XmlColumnProperties), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.TableColumnExtensionList), 0, 1)
+                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("x:name"), 0, 255));
             builder.AddConstraint(new AttributeAbsentConditionToValue(builder.CreateQName("x:totalsRowLabel"), builder.CreateQName("x:totalsRowFunction"), "custom"));
@@ -30735,7 +30717,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>The calculated column formula.</para>
+        /// <para>Calculated Column Formula.</para>
         /// <para>Represents the following element tag in the schema: x:calculatedColumnFormula.</para>
         /// </summary>
         /// <remark>
@@ -30748,7 +30730,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Custom totals row formula. Requires totalsRowFunction="custom".</para>
+        /// <para>Totals Row Formula.</para>
         /// <para>Represents the following element tag in the schema: x:totalsRowFormula.</para>
         /// </summary>
         /// <remark>
@@ -30761,7 +30743,7 @@ namespace DocumentFormat.OpenXml.Spreadsheet
         }
 
         /// <summary>
-        /// <para>Column properties for XML tables.</para>
+        /// <para>XML Column Properties.</para>
         /// <para>Represents the following element tag in the schema: x:xmlColumnPr.</para>
         /// </summary>
         /// <remark>
@@ -30773,21 +30755,270 @@ namespace DocumentFormat.OpenXml.Spreadsheet
             set => SetElement(value);
         }
 
+        /// <inheritdoc/>
+        public override OpenXmlElement CloneNode(bool deep) => CloneImp<TableColumn>(deep);
+    }
+
+    /// <summary>
+    /// <para>Calculated Column Formula.</para>
+    /// <para>This class is available in Office 2007 and above.</para>
+    /// <para>When the object is serialized out as xml, it's qualified name is x:calculatedColumnFormula.</para>
+    /// </summary>
+    public partial class CalculatedColumnFormula : TableFormulaType
+    {
         /// <summary>
-        /// <para>Future Extensibility.</para>
+        /// Initializes a new instance of the CalculatedColumnFormula class.
+        /// </summary>
+        public CalculatedColumnFormula() : base()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the CalculatedColumnFormula class with the specified text content.
+        /// </summary>
+        /// <param name="text">Specifies the text content of the element.</param>
+        public CalculatedColumnFormula(string text) : base(text)
+        {
+        }
+
+        internal override OpenXmlSimpleType InnerTextToValue(string text)
+        {
+            return new StringValue { InnerText = text };
+        }
+
+        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
+        {
+            base.ConfigureMetadata(builder);
+            builder.SetSchema("x:calculatedColumnFormula");
+        }
+
+        /// <inheritdoc/>
+        public override OpenXmlElement CloneNode(bool deep) => CloneImp<CalculatedColumnFormula>(deep);
+    }
+
+    /// <summary>
+    /// <para>Totals Row Formula.</para>
+    /// <para>This class is available in Office 2007 and above.</para>
+    /// <para>When the object is serialized out as xml, it's qualified name is x:totalsRowFormula.</para>
+    /// </summary>
+    public partial class TotalsRowFormula : TableFormulaType
+    {
+        /// <summary>
+        /// Initializes a new instance of the TotalsRowFormula class.
+        /// </summary>
+        public TotalsRowFormula() : base()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the TotalsRowFormula class with the specified text content.
+        /// </summary>
+        /// <param name="text">Specifies the text content of the element.</param>
+        public TotalsRowFormula(string text) : base(text)
+        {
+        }
+
+        internal override OpenXmlSimpleType InnerTextToValue(string text)
+        {
+            return new StringValue { InnerText = text };
+        }
+
+        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
+        {
+            base.ConfigureMetadata(builder);
+            builder.SetSchema("x:totalsRowFormula");
+        }
+
+        /// <inheritdoc/>
+        public override OpenXmlElement CloneNode(bool deep) => CloneImp<TotalsRowFormula>(deep);
+    }
+
+    /// <summary>
+    /// <para>Defines the TableFormulaType Class.</para>
+    /// <para>This class is available in Office 2007 and above.</para>
+    /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
+    /// </summary>
+    public abstract partial class TableFormulaType : OpenXmlLeafTextElement
+    {
+        /// <summary>
+        /// Initializes a new instance of the TableFormulaType class.
+        /// </summary>
+        protected TableFormulaType() : base()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the TableFormulaType class with the specified text content.
+        /// </summary>
+        /// <param name="text">Specifies the text content of the element.</param>
+        protected TableFormulaType(string text) : base(text)
+        {
+        }
+
+        internal override OpenXmlSimpleType InnerTextToValue(string text)
+        {
+            return new StringValue { InnerText = text };
+        }
+
+        /// <summary>
+        /// <para>Array</para>
+        /// <para>Represents the following attribute in the schema: array</para>
+        /// </summary>
+        public BooleanValue? Array
+        {
+            get => GetAttribute<BooleanValue>();
+            set => SetAttribute(value);
+        }
+
+        /// <summary>
+        /// <para>space</para>
+        /// <para>Represents the following attribute in the schema: xml:space</para>
+        /// </summary>
+        /// <remark>
+        /// xmlns:xml=http://www.w3.org/XML/1998/namespace
+        /// </remark>
+        public EnumValue<DocumentFormat.OpenXml.SpaceProcessingModeValues>? Space
+        {
+            get => GetAttribute<EnumValue<DocumentFormat.OpenXml.SpaceProcessingModeValues>>();
+            set => SetAttribute(value);
+        }
+
+        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
+        {
+            base.ConfigureMetadata(builder);
+            builder.AddElement<TableFormulaType>()
+                .AddAttribute("array", a => a.Array)
+                .AddAttribute("xml:space", a => a.Space);
+        }
+    }
+
+    /// <summary>
+    /// <para>XML Column Properties.</para>
+    /// <para>This class is available in Office 2007 and above.</para>
+    /// <para>When the object is serialized out as xml, it's qualified name is x:xmlColumnPr.</para>
+    /// </summary>
+    /// <remark>
+    /// <para>The following table lists the possible child types:</para>
+    /// <list type="bullet">
+    ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.ExtensionList" /> <c>&lt;x:extLst></c></description></item>
+    /// </list>
+    /// </remark>
+    public partial class XmlColumnProperties : OpenXmlCompositeElement
+    {
+        /// <summary>
+        /// Initializes a new instance of the XmlColumnProperties class.
+        /// </summary>
+        public XmlColumnProperties() : base()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the XmlColumnProperties class with the specified child elements.
+        /// </summary>
+        /// <param name="childElements">Specifies the child elements.</param>
+        public XmlColumnProperties(IEnumerable<OpenXmlElement> childElements) : base(childElements)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the XmlColumnProperties class with the specified child elements.
+        /// </summary>
+        /// <param name="childElements">Specifies the child elements.</param>
+        public XmlColumnProperties(params OpenXmlElement[] childElements) : base(childElements)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the XmlColumnProperties class from outer XML.
+        /// </summary>
+        /// <param name="outerXml">Specifies the outer XML of the element.</param>
+        public XmlColumnProperties(string outerXml) : base(outerXml)
+        {
+        }
+
+        /// <summary>
+        /// <para>XML Map Id</para>
+        /// <para>Represents the following attribute in the schema: mapId</para>
+        /// </summary>
+        public UInt32Value? MapId
+        {
+            get => GetAttribute<UInt32Value>();
+            set => SetAttribute(value);
+        }
+
+        /// <summary>
+        /// <para>XPath</para>
+        /// <para>Represents the following attribute in the schema: xpath</para>
+        /// </summary>
+        public StringValue? XPath
+        {
+            get => GetAttribute<StringValue>();
+            set => SetAttribute(value);
+        }
+
+        /// <summary>
+        /// <para>Denormalized</para>
+        /// <para>Represents the following attribute in the schema: denormalized</para>
+        /// </summary>
+        public BooleanValue? Denormalized
+        {
+            get => GetAttribute<BooleanValue>();
+            set => SetAttribute(value);
+        }
+
+        /// <summary>
+        /// <para>XML Data Type</para>
+        /// <para>Represents the following attribute in the schema: xmlDataType</para>
+        /// </summary>
+        public EnumValue<DocumentFormat.OpenXml.Spreadsheet.XmlDataValues>? XmlDataType
+        {
+            get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Spreadsheet.XmlDataValues>>();
+            set => SetAttribute(value);
+        }
+
+        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
+        {
+            base.ConfigureMetadata(builder);
+            builder.SetSchema("x:xmlColumnPr");
+            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
+            builder.AddElement<XmlColumnProperties>()
+                .AddAttribute("mapId", a => a.MapId, aBuilder =>
+                {
+                    aBuilder.AddValidator(RequiredValidator.Instance);
+                })
+                .AddAttribute("xpath", a => a.XPath, aBuilder =>
+                {
+                    aBuilder.AddValidator(RequiredValidator.Instance);
+                })
+                .AddAttribute("denormalized", a => a.Denormalized)
+                .AddAttribute("xmlDataType", a => a.XmlDataType, aBuilder =>
+                {
+                    aBuilder.AddValidator(RequiredValidator.Instance);
+                });
+            builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
+            {
+                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
+            };
+            builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("x:xpath"), 0, 32000));
+            builder.AddConstraint(new ReferenceExistConstraint(builder.CreateQName("x:mapId"), "CustomXmlMappingsPart", builder.CreateQName("x:Map"), "x:Map", builder.CreateQName("x:ID")));
+            builder.AddConstraint(new AttributeValueRangeConstraint(builder.CreateQName("x:mapId"), true, 1, true, 21474836477, true) { Application = ApplicationType.Excel });
+        }
+
+        /// <summary>
+        /// <para>Future Feature Data Storage Area.</para>
         /// <para>Represents the following element tag in the schema: x:extLst.</para>
         /// </summary>
         /// <remark>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
         /// </remark>
-        public DocumentFormat.OpenXml.Spreadsheet.TableColumnExtensionList? TableColumnExtensionList
+        public DocumentFormat.OpenXml.Spreadsheet.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.TableColumnExtensionList>();
+            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
             set => SetElement(value);
         }
 
         /// <inheritdoc/>
-        public override OpenXmlElement CloneNode(bool deep) => CloneImp<TableColumn>(deep);
+        public override OpenXmlElement CloneNode(bool deep) => CloneImp<XmlColumnProperties>(deep);
     }
 
     /// <summary>
@@ -42630,82 +42861,6 @@ namespace DocumentFormat.OpenXml.Spreadsheet
     }
 
     /// <summary>
-    /// <para>Defines the TableColumnExtension Class.</para>
-    /// <para>This class is available in Office 2007 and above.</para>
-    /// <para>When the object is serialized out as xml, it's qualified name is x:ext.</para>
-    /// </summary>
-    /// <remark>
-    /// <para>The following table lists the possible child types:</para>
-    /// <list type="bullet">
-    ///   <item><description><see cref="DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.MsForms.Question" /> <c>&lt;xlmsforms:question></c></description></item>
-    /// </list>
-    /// </remark>
-    public partial class TableColumnExtension : OpenXmlCompositeElement
-    {
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtension class.
-        /// </summary>
-        public TableColumnExtension() : base()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtension class with the specified child elements.
-        /// </summary>
-        /// <param name="childElements">Specifies the child elements.</param>
-        public TableColumnExtension(IEnumerable<OpenXmlElement> childElements) : base(childElements)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtension class with the specified child elements.
-        /// </summary>
-        /// <param name="childElements">Specifies the child elements.</param>
-        public TableColumnExtension(params OpenXmlElement[] childElements) : base(childElements)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtension class from outer XML.
-        /// </summary>
-        /// <param name="outerXml">Specifies the outer XML of the element.</param>
-        public TableColumnExtension(string outerXml) : base(outerXml)
-        {
-        }
-
-        /// <summary>
-        /// <para>URI</para>
-        /// <para>Represents the following attribute in the schema: uri</para>
-        /// </summary>
-        public StringValue? Uri
-        {
-            get => GetAttribute<StringValue>();
-            set => SetAttribute(value);
-        }
-
-        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
-        {
-            base.ConfigureMetadata(builder);
-            builder.SetSchema("x:ext");
-            builder.AddChild<DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.MsForms.Question>();
-            builder.AddElement<TableColumnExtension>()
-                .AddAttribute("uri", a => a.Uri, aBuilder =>
-                {
-                    aBuilder.AddValidator(RequiredValidator.Instance);
-                    aBuilder.AddValidator(new StringValidator() { IsToken = (true) });
-                });
-            builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
-            {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.MsForms.Question), 1, 1, version: FileFormatVersions.Microsoft365),
-                new AnyParticle(0, 1)
-            };
-        }
-
-        /// <inheritdoc/>
-        public override OpenXmlElement CloneNode(bool deep) => CloneImp<TableColumnExtension>(deep);
-    }
-
-    /// <summary>
     /// <para>Defines the Location Class.</para>
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x:location.</para>
@@ -45258,327 +45413,6 @@ namespace DocumentFormat.OpenXml.Spreadsheet
 
         /// <inheritdoc/>
         public override OpenXmlElement CloneNode(bool deep) => CloneImp<DxfExtensionList>(deep);
-    }
-
-    /// <summary>
-    /// <para>The calculated column formula.</para>
-    /// <para>This class is available in Office 2007 and above.</para>
-    /// <para>When the object is serialized out as xml, it's qualified name is x:calculatedColumnFormula.</para>
-    /// </summary>
-    public partial class CalculatedColumnFormula : TableFormulaType
-    {
-        /// <summary>
-        /// Initializes a new instance of the CalculatedColumnFormula class.
-        /// </summary>
-        public CalculatedColumnFormula() : base()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the CalculatedColumnFormula class with the specified text content.
-        /// </summary>
-        /// <param name="text">Specifies the text content of the element.</param>
-        public CalculatedColumnFormula(string text) : base(text)
-        {
-        }
-
-        internal override OpenXmlSimpleType InnerTextToValue(string text)
-        {
-            return new StringValue { InnerText = text };
-        }
-
-        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
-        {
-            base.ConfigureMetadata(builder);
-            builder.SetSchema("x:calculatedColumnFormula");
-        }
-
-        /// <inheritdoc/>
-        public override OpenXmlElement CloneNode(bool deep) => CloneImp<CalculatedColumnFormula>(deep);
-    }
-
-    /// <summary>
-    /// <para>Custom totals row formula. Requires totalsRowFunction="custom".</para>
-    /// <para>This class is available in Office 2007 and above.</para>
-    /// <para>When the object is serialized out as xml, it's qualified name is x:totalsRowFormula.</para>
-    /// </summary>
-    public partial class TotalsRowFormula : TableFormulaType
-    {
-        /// <summary>
-        /// Initializes a new instance of the TotalsRowFormula class.
-        /// </summary>
-        public TotalsRowFormula() : base()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TotalsRowFormula class with the specified text content.
-        /// </summary>
-        /// <param name="text">Specifies the text content of the element.</param>
-        public TotalsRowFormula(string text) : base(text)
-        {
-        }
-
-        internal override OpenXmlSimpleType InnerTextToValue(string text)
-        {
-            return new StringValue { InnerText = text };
-        }
-
-        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
-        {
-            base.ConfigureMetadata(builder);
-            builder.SetSchema("x:totalsRowFormula");
-        }
-
-        /// <inheritdoc/>
-        public override OpenXmlElement CloneNode(bool deep) => CloneImp<TotalsRowFormula>(deep);
-    }
-
-    /// <summary>
-    /// <para>Defines the TableFormulaType Class.</para>
-    /// <para>This class is available in Office 2007 and above.</para>
-    /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
-    /// </summary>
-    public abstract partial class TableFormulaType : OpenXmlLeafTextElement
-    {
-        /// <summary>
-        /// Initializes a new instance of the TableFormulaType class.
-        /// </summary>
-        protected TableFormulaType() : base()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableFormulaType class with the specified text content.
-        /// </summary>
-        /// <param name="text">Specifies the text content of the element.</param>
-        protected TableFormulaType(string text) : base(text)
-        {
-        }
-
-        internal override OpenXmlSimpleType InnerTextToValue(string text)
-        {
-            return new StringValue { InnerText = text };
-        }
-
-        /// <summary>
-        /// <para>Array</para>
-        /// <para>Represents the following attribute in the schema: array</para>
-        /// </summary>
-        public BooleanValue? Array
-        {
-            get => GetAttribute<BooleanValue>();
-            set => SetAttribute(value);
-        }
-
-        /// <summary>
-        /// <para>space</para>
-        /// <para>Represents the following attribute in the schema: xml:space</para>
-        /// </summary>
-        /// <remark>
-        /// xmlns:xml=http://www.w3.org/XML/1998/namespace
-        /// </remark>
-        public EnumValue<DocumentFormat.OpenXml.SpaceProcessingModeValues>? Space
-        {
-            get => GetAttribute<EnumValue<DocumentFormat.OpenXml.SpaceProcessingModeValues>>();
-            set => SetAttribute(value);
-        }
-
-        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
-        {
-            base.ConfigureMetadata(builder);
-            builder.AddElement<TableFormulaType>()
-                .AddAttribute("array", a => a.Array)
-                .AddAttribute("xml:space", a => a.Space);
-        }
-    }
-
-    /// <summary>
-    /// <para>Column properties for XML tables.</para>
-    /// <para>This class is available in Office 2007 and above.</para>
-    /// <para>When the object is serialized out as xml, it's qualified name is x:xmlColumnPr.</para>
-    /// </summary>
-    /// <remark>
-    /// <para>The following table lists the possible child types:</para>
-    /// <list type="bullet">
-    ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.ExtensionList" /> <c>&lt;x:extLst></c></description></item>
-    /// </list>
-    /// </remark>
-    public partial class XmlColumnProperties : OpenXmlCompositeElement
-    {
-        /// <summary>
-        /// Initializes a new instance of the XmlColumnProperties class.
-        /// </summary>
-        public XmlColumnProperties() : base()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the XmlColumnProperties class with the specified child elements.
-        /// </summary>
-        /// <param name="childElements">Specifies the child elements.</param>
-        public XmlColumnProperties(IEnumerable<OpenXmlElement> childElements) : base(childElements)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the XmlColumnProperties class with the specified child elements.
-        /// </summary>
-        /// <param name="childElements">Specifies the child elements.</param>
-        public XmlColumnProperties(params OpenXmlElement[] childElements) : base(childElements)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the XmlColumnProperties class from outer XML.
-        /// </summary>
-        /// <param name="outerXml">Specifies the outer XML of the element.</param>
-        public XmlColumnProperties(string outerXml) : base(outerXml)
-        {
-        }
-
-        /// <summary>
-        /// <para>XML Map Id</para>
-        /// <para>Represents the following attribute in the schema: mapId</para>
-        /// </summary>
-        public UInt32Value? MapId
-        {
-            get => GetAttribute<UInt32Value>();
-            set => SetAttribute(value);
-        }
-
-        /// <summary>
-        /// <para>XPath</para>
-        /// <para>Represents the following attribute in the schema: xpath</para>
-        /// </summary>
-        public StringValue? XPath
-        {
-            get => GetAttribute<StringValue>();
-            set => SetAttribute(value);
-        }
-
-        /// <summary>
-        /// <para>Denormalized</para>
-        /// <para>Represents the following attribute in the schema: denormalized</para>
-        /// </summary>
-        public BooleanValue? Denormalized
-        {
-            get => GetAttribute<BooleanValue>();
-            set => SetAttribute(value);
-        }
-
-        /// <summary>
-        /// <para>XML Data Type</para>
-        /// <para>Represents the following attribute in the schema: xmlDataType</para>
-        /// </summary>
-        public EnumValue<DocumentFormat.OpenXml.Spreadsheet.XmlDataValues>? XmlDataType
-        {
-            get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Spreadsheet.XmlDataValues>>();
-            set => SetAttribute(value);
-        }
-
-        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
-        {
-            base.ConfigureMetadata(builder);
-            builder.SetSchema("x:xmlColumnPr");
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            builder.AddElement<XmlColumnProperties>()
-                .AddAttribute("mapId", a => a.MapId, aBuilder =>
-                {
-                    aBuilder.AddValidator(RequiredValidator.Instance);
-                })
-                .AddAttribute("xpath", a => a.XPath, aBuilder =>
-                {
-                    aBuilder.AddValidator(RequiredValidator.Instance);
-                })
-                .AddAttribute("denormalized", a => a.Denormalized)
-                .AddAttribute("xmlDataType", a => a.XmlDataType, aBuilder =>
-                {
-                    aBuilder.AddValidator(RequiredValidator.Instance);
-                });
-            builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
-            {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
-            };
-            builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("x:xpath"), 0, 32000));
-            builder.AddConstraint(new ReferenceExistConstraint(builder.CreateQName("x:mapId"), "CustomXmlMappingsPart", builder.CreateQName("x:Map"), "x:Map", builder.CreateQName("x:ID")));
-            builder.AddConstraint(new AttributeValueRangeConstraint(builder.CreateQName("x:mapId"), true, 1, true, 21474836477, true) { Application = ApplicationType.Excel });
-        }
-
-        /// <summary>
-        /// <para>Future Feature Data Storage Area.</para>
-        /// <para>Represents the following element tag in the schema: x:extLst.</para>
-        /// </summary>
-        /// <remark>
-        /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
-        public DocumentFormat.OpenXml.Spreadsheet.ExtensionList? ExtensionList
-        {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            set => SetElement(value);
-        }
-
-        /// <inheritdoc/>
-        public override OpenXmlElement CloneNode(bool deep) => CloneImp<XmlColumnProperties>(deep);
-    }
-
-    /// <summary>
-    /// <para>Future Extensibility.</para>
-    /// <para>This class is available in Office 2007 and above.</para>
-    /// <para>When the object is serialized out as xml, it's qualified name is x:extLst.</para>
-    /// </summary>
-    /// <remark>
-    /// <para>The following table lists the possible child types:</para>
-    /// <list type="bullet">
-    ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.TableColumnExtension" /> <c>&lt;x:ext></c></description></item>
-    /// </list>
-    /// </remark>
-    public partial class TableColumnExtensionList : OpenXmlCompositeElement
-    {
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtensionList class.
-        /// </summary>
-        public TableColumnExtensionList() : base()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtensionList class with the specified child elements.
-        /// </summary>
-        /// <param name="childElements">Specifies the child elements.</param>
-        public TableColumnExtensionList(IEnumerable<OpenXmlElement> childElements) : base(childElements)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtensionList class with the specified child elements.
-        /// </summary>
-        /// <param name="childElements">Specifies the child elements.</param>
-        public TableColumnExtensionList(params OpenXmlElement[] childElements) : base(childElements)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the TableColumnExtensionList class from outer XML.
-        /// </summary>
-        /// <param name="outerXml">Specifies the outer XML of the element.</param>
-        public TableColumnExtensionList(string outerXml) : base(outerXml)
-        {
-        }
-
-        internal override void ConfigureMetadata(ElementMetadata.Builder builder)
-        {
-            base.ConfigureMetadata(builder);
-            builder.SetSchema("x:extLst");
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.TableColumnExtension>();
-            builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
-            {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.TableColumnExtension), 0, 0)
-            };
-        }
-
-        /// <inheritdoc/>
-        public override OpenXmlElement CloneNode(bool deep) => CloneImp<TableColumnExtensionList>(deep);
     }
 
     /// <summary>

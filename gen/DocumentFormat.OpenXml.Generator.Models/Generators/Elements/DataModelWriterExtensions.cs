@@ -110,6 +110,11 @@ public static class DataModelWriterExtensions
             {
                 foreach (var node in element.Children)
                 {
+                    if (className == "TableColumn" && node.Name.ToString().Contains("ExtensionList"))
+                    {
+                        continue;
+                    }
+
                     writer.WriteElement(services, element, node, ref delimiter);
                 }
             }

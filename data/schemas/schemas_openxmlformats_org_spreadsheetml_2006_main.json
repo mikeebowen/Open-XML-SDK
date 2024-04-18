@@ -16816,7 +16816,7 @@
           "QName": ":id",
           "PropertyName": "Id",
           "Type": "UInt32Value",
-          "PropertyComments": "The unique identifier of the table field",
+          "PropertyComments": "Table Field Id",
           "Validators": [
             {
               "Name": "RequiredValidator"
@@ -16824,44 +16824,16 @@
           ]
         },
         {
-          "QName": "xr3:uid",
-          "Type": "StringValue",
-          "Version": "Office2019",
-          "PropertyComments": "Unique ID (GUID form) of the table field",
-          "Validators": [
-            {
-              "Arguments": [
-                {
-                  "Type": "Version",
-                  "Value": "Office2019"
-                }
-              ],
-              "Name": "OfficeVersionValidator"
-            },
-            {
-              "Arguments": [
-                {
-                  "Type": "String",
-                  "Name": "Pattern",
-                  "Value": "\\{[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\\}"
-                }
-              ],
-              "Name": "StringValidator",
-              "IsInitialVersion": true
-            }
-          ]
-        },
-        {
           "QName": ":uniqueName",
           "PropertyName": "UniqueName",
           "Type": "StringValue",
-          "PropertyComments": "The unique name of the table field"
+          "PropertyComments": "Unique Name"
         },
         {
           "QName": ":name",
           "PropertyName": "Name",
           "Type": "StringValue",
-          "PropertyComments": "The unique caption of the table field",
+          "PropertyComments": "Column name",
           "Validators": [
             {
               "Name": "RequiredValidator"
@@ -16872,77 +16844,77 @@
           "QName": ":totalsRowFunction",
           "PropertyName": "TotalsRowFunction",
           "Type": "EnumValue\u003CDocumentFormat.OpenXml.Spreadsheet.TotalsRowFunctionValues\u003E",
-          "PropertyComments": "Aggregation to show in the Totals Row cell"
+          "PropertyComments": "Totals Row Function"
         },
         {
           "QName": ":totalsRowLabel",
           "PropertyName": "TotalsRowLabel",
           "Type": "StringValue",
-          "PropertyComments": "String to show in the Totals Row cell. Requires totalsRowFunction=\u0022none\u0022"
+          "PropertyComments": "Totals Row Label"
         },
         {
           "QName": ":queryTableFieldId",
           "PropertyName": "QueryTableFieldId",
           "Type": "UInt32Value",
-          "PropertyComments": " The query Table field ID corresponding to this Table column"
+          "PropertyComments": "Query Table Field Id"
         },
         {
           "QName": ":headerRowDxfId",
           "PropertyName": "HeaderRowDifferentialFormattingId",
           "Type": "UInt32Value",
-          "PropertyComments": "Header row cell format tag"
+          "PropertyComments": "Header Row Cell Format Id"
         },
         {
           "QName": ":dataDxfId",
           "PropertyName": "DataFormatId",
           "Type": "UInt32Value",
-          "PropertyComments": "Data and insert row cell format tag"
+          "PropertyComments": "Data and Insert Row Format Id"
         },
         {
           "QName": ":totalsRowDxfId",
           "PropertyName": "TotalsRowDifferentialFormattingId",
           "Type": "UInt32Value",
-          "PropertyComments": "Totals row cell format tag"
+          "PropertyComments": "Totals Row Format Id"
         },
         {
           "QName": ":headerRowCellStyle",
           "PropertyName": "HeaderRowCellStyle",
           "Type": "StringValue",
-          "PropertyComments": "Header cell cached style name"
+          "PropertyComments": "Header Row Cell Style"
         },
         {
           "QName": ":dataCellStyle",
           "PropertyName": "DataCellStyle",
           "Type": "StringValue",
-          "PropertyComments": "Data cell style name"
+          "PropertyComments": "Data Area Style Name"
         },
         {
           "QName": ":totalsRowCellStyle",
           "PropertyName": "TotalsRowCellStyle",
           "Type": "StringValue",
-          "PropertyComments": "Totals row cell style name"
+          "PropertyComments": "Totals Row Style Name"
         }
       ],
       "Children": [
         {
           "Name": "x:CT_TableFormula/x:calculatedColumnFormula",
           "PropertyName": "CalculatedColumnFormula",
-          "PropertyComments": "The calculated column formula"
+          "PropertyComments": "Calculated Column Formula"
         },
         {
           "Name": "x:CT_TableFormula/x:totalsRowFormula",
           "PropertyName": "TotalsRowFormula",
-          "PropertyComments": "Custom totals row formula. Requires totalsRowFunction=\u0022custom\u0022"
+          "PropertyComments": "Totals Row Formula"
         },
         {
           "Name": "x:CT_XmlColumnPr/x:xmlColumnPr",
           "PropertyName": "XmlColumnProperties",
-          "PropertyComments": "Column properties for XML tables"
+          "PropertyComments": "XML Column Properties"
         },
         {
-          "Name": "x:CT_TableColumnExtensionList/x:extLst",
-          "PropertyName": "TableColumnExtensionList",
-          "PropertyComments": "Future Extensibility"
+          "Name": "x:CT_ExtensionList/x:extLst",
+          "PropertyName": "ExtensionList",
+          "PropertyComments": "Future Feature Data Storage Area"
         }
       ],
       "Particle": {
@@ -16973,7 +16945,113 @@
             ]
           },
           {
-            "Name": "x:CT_TableColumnExtensionList/x:extLst",
+            "Name": "x:CT_ExtensionList/x:extLst",
+            "Occurs": [
+              {
+                "Max": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Name": "x:CT_TableFormula/x:calculatedColumnFormula",
+      "ClassName": "CalculatedColumnFormula",
+      "Summary": "Calculated Column Formula.",
+      "BaseClass": "TableFormulaType",
+      "IsDerived": true,
+      "IsLeafText": true
+    },
+    {
+      "Name": "x:CT_TableFormula/x:totalsRowFormula",
+      "ClassName": "TotalsRowFormula",
+      "Summary": "Totals Row Formula.",
+      "BaseClass": "TableFormulaType",
+      "IsDerived": true,
+      "IsLeafText": true
+    },
+    {
+      "Name": "x:CT_TableFormula/",
+      "ClassName": "TableFormulaType",
+      "Summary": "Defines the TableFormulaType Class.",
+      "BaseClass": "OpenXmlLeafTextElement",
+      "IsAbstract": true,
+      "IsLeafText": true,
+      "Attributes": [
+        {
+          "QName": ":array",
+          "PropertyName": "Array",
+          "Type": "BooleanValue",
+          "PropertyComments": "Array"
+        },
+        {
+          "QName": "xml:space",
+          "PropertyName": "Space",
+          "Type": "EnumValue\u003CDocumentFormat.OpenXml.SpaceProcessingModeValues\u003E",
+          "PropertyComments": "space"
+        }
+      ]
+    },
+    {
+      "Name": "x:CT_XmlColumnPr/x:xmlColumnPr",
+      "ClassName": "XmlColumnProperties",
+      "Summary": "XML Column Properties.",
+      "CompositeType": "OneSequence",
+      "BaseClass": "OpenXmlCompositeElement",
+      "Attributes": [
+        {
+          "QName": ":mapId",
+          "PropertyName": "MapId",
+          "Type": "UInt32Value",
+          "PropertyComments": "XML Map Id",
+          "Validators": [
+            {
+              "Name": "RequiredValidator"
+            }
+          ]
+        },
+        {
+          "QName": ":xpath",
+          "PropertyName": "XPath",
+          "Type": "StringValue",
+          "PropertyComments": "XPath",
+          "Validators": [
+            {
+              "Name": "RequiredValidator"
+            }
+          ]
+        },
+        {
+          "QName": ":denormalized",
+          "PropertyName": "Denormalized",
+          "Type": "BooleanValue",
+          "PropertyComments": "Denormalized"
+        },
+        {
+          "QName": ":xmlDataType",
+          "PropertyName": "XmlDataType",
+          "Type": "EnumValue\u003CDocumentFormat.OpenXml.Spreadsheet.XmlDataValues\u003E",
+          "PropertyComments": "XML Data Type",
+          "Validators": [
+            {
+              "Name": "RequiredValidator"
+            }
+          ]
+        }
+      ],
+      "Children": [
+        {
+          "Name": "x:CT_ExtensionList/x:extLst",
+          "PropertyName": "ExtensionList",
+          "PropertyComments": "Future Feature Data Storage Area"
+        }
+      ],
+      "Particle": {
+        "Kind": "Sequence",
+        "Items": [
+          {
+            "Name": "x:CT_ExtensionList/x:extLst",
             "Occurs": [
               {
                 "Max": 1
@@ -23129,58 +23207,6 @@
       }
     },
     {
-      "Name": "x:CT_TableColumnExtension/x:ext",
-      "ClassName": "TableColumnExtension",
-      "Summary": "Defines the TableColumnExtension Class.",
-      "BaseClass": "OpenXmlCompositeElement",
-      "Attributes": [
-        {
-          "QName": ":uri",
-          "Type": "StringValue",
-          "PropertyComments": "URI",
-          "Validators": [
-            {
-              "Name": "RequiredValidator"
-            },
-            {
-              "Arguments": [
-                {
-                  "Type": "Boolean",
-                  "Name": "IsToken",
-                  "Value": "True"
-                }
-              ],
-              "Name": "StringValidator",
-              "IsInitialVersion": true
-            }
-          ]
-        }
-      ],
-      "Children": [
-        {
-          "Name": "xlmsforms:CT_Question/xlmsforms:question",
-          "PropertyName": "Question"
-        }
-      ],
-      "Particle": {
-        "Kind": "Choice",
-        "Items": [
-          {
-            "Name": "xlmsforms:CT_Question/xlmsforms:question",
-            "InitialVersion": "Microsoft365"
-          },
-          {
-            "Kind": "Any",
-            "Occurs": [
-              {
-                "Max": 1
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
       "Name": "x:CT_Location/x:location",
       "ClassName": "Location",
       "Summary": "Defines the Location Class.",
@@ -24426,134 +24452,6 @@
         "Items": [
           {
             "Name": "x:CT_DxfExtension/x:ext",
-            "Occurs": [
-              {}
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "Name": "x:CT_TableFormula/x:calculatedColumnFormula",
-      "ClassName": "CalculatedColumnFormula",
-      "Summary": "The calculated column formula.",
-      "BaseClass": "TableFormulaType",
-      "IsDerived": true,
-      "IsLeafText": true
-    },
-    {
-      "Name": "x:CT_TableFormula/x:totalsRowFormula",
-      "ClassName": "TotalsRowFormula",
-      "Summary": "Custom totals row formula. Requires totalsRowFunction=\u0022custom\u0022.",
-      "BaseClass": "TableFormulaType",
-      "IsDerived": true,
-      "IsLeafText": true
-    },
-    {
-      "Name": "x:CT_TableFormula/",
-      "ClassName": "TableFormulaType",
-      "Summary": "Defines the TableFormulaType Class.",
-      "BaseClass": "OpenXmlLeafTextElement",
-      "IsAbstract": true,
-      "IsLeafText": true,
-      "Attributes": [
-        {
-          "QName": ":array",
-          "PropertyName": "Array",
-          "Type": "BooleanValue",
-          "PropertyComments": "Array"
-        },
-        {
-          "QName": "xml:space",
-          "PropertyName": "Space",
-          "Type": "EnumValue\u003CDocumentFormat.OpenXml.SpaceProcessingModeValues\u003E",
-          "PropertyComments": "space"
-        }
-      ]
-    },
-    {
-      "Name": "x:CT_XmlColumnPr/x:xmlColumnPr",
-      "ClassName": "XmlColumnProperties",
-      "Summary": "Column properties for XML tables.",
-      "CompositeType": "OneSequence",
-      "BaseClass": "OpenXmlCompositeElement",
-      "Attributes": [
-        {
-          "QName": ":mapId",
-          "PropertyName": "MapId",
-          "Type": "UInt32Value",
-          "PropertyComments": "XML Map Id",
-          "Validators": [
-            {
-              "Name": "RequiredValidator"
-            }
-          ]
-        },
-        {
-          "QName": ":xpath",
-          "PropertyName": "XPath",
-          "Type": "StringValue",
-          "PropertyComments": "XPath",
-          "Validators": [
-            {
-              "Name": "RequiredValidator"
-            }
-          ]
-        },
-        {
-          "QName": ":denormalized",
-          "PropertyName": "Denormalized",
-          "Type": "BooleanValue",
-          "PropertyComments": "Denormalized"
-        },
-        {
-          "QName": ":xmlDataType",
-          "PropertyName": "XmlDataType",
-          "Type": "EnumValue\u003CDocumentFormat.OpenXml.Spreadsheet.XmlDataValues\u003E",
-          "PropertyComments": "XML Data Type",
-          "Validators": [
-            {
-              "Name": "RequiredValidator"
-            }
-          ]
-        }
-      ],
-      "Children": [
-        {
-          "Name": "x:CT_ExtensionList/x:extLst",
-          "PropertyName": "ExtensionList",
-          "PropertyComments": "Future Feature Data Storage Area"
-        }
-      ],
-      "Particle": {
-        "Kind": "Sequence",
-        "Items": [
-          {
-            "Name": "x:CT_ExtensionList/x:extLst",
-            "Occurs": [
-              {
-                "Max": 1
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "Name": "x:CT_TableColumnExtensionList/x:extLst",
-      "ClassName": "TableColumnExtensionList",
-      "Summary": "Future Extensibility.",
-      "BaseClass": "OpenXmlCompositeElement",
-      "Children": [
-        {
-          "Name": "x:CT_TableColumnExtension/x:ext"
-        }
-      ],
-      "Particle": {
-        "Kind": "Sequence",
-        "Items": [
-          {
-            "Name": "x:CT_TableColumnExtension/x:ext",
             "Occurs": [
               {}
             ]
