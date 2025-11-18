@@ -49156,6 +49156,87 @@
   ]
  },
  {
+  "Key": "DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.Pivot2023Calculation.PivotAreaReferenceSubtotals",
+  "Value": [
+   {
+    "Key": "Microsoft365",
+    "Value": {
+     "ChildrenParticles": [
+      {
+       "MaxOccurs": 0,
+       "Type": {
+        "Name": "http://schemas.microsoft.com/office/spreadsheetml/2023/pivot2023Calculation:subtotal",
+        "Type": "http://schemas.microsoft.com/office/spreadsheetml/2023/pivot2023Calculation:CT_PivotSubtotalType"
+       }
+      }
+     ],
+     "ParticleType": "Sequence"
+    }
+   }
+  ]
+ },
+ {
+  "Key": "DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.Pivot2023Calculation.PivotFieldSubtotals",
+  "Value": [
+   {
+    "Key": "Microsoft365",
+    "Value": {
+     "ChildrenParticles": [
+      {
+       "MaxOccurs": 0,
+       "MinOccurs": 0,
+       "Type": {
+        "Name": "http://schemas.microsoft.com/office/spreadsheetml/2023/pivot2023Calculation:subtotal",
+        "Type": "http://schemas.microsoft.com/office/spreadsheetml/2023/pivot2023Calculation:CT_PivotItemSubtotal"
+       }
+      }
+     ],
+     "ParticleType": "Sequence"
+    }
+   }
+  ]
+ },
+ {
+  "Key": "DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.Pivot2023Calculation.PivotTableSubtotalLineItems",
+  "Value": [
+   {
+    "Key": "Microsoft365",
+    "Value": {
+     "ChildrenParticles": [
+      {
+       "MaxOccurs": 0,
+       "Type": {
+        "Name": "http://schemas.microsoft.com/office/spreadsheetml/2023/pivot2023Calculation:subtotalLineItem",
+        "Type": "http://schemas.microsoft.com/office/spreadsheetml/2023/pivot2023Calculation:CT_PivotItemSubtotal"
+       }
+      }
+     ],
+     "ParticleType": "Sequence"
+    }
+   }
+  ]
+ },
+ {
+  "Key": "DocumentFormat.OpenXml.Office.SpreadSheetML.Y2025.PivotDataSource.PivotCacheDataSource",
+  "Value": [
+   {
+    "Key": "Microsoft365",
+    "Value": {
+     "ChildrenParticles": [
+      {
+       "MinOccurs": 0,
+       "Type": {
+        "Name": "http://schemas.microsoft.com/office/excel/2006/main:f",
+        "Type": "http://schemas.openxmlformats.org/spreadsheetml/2006/main:ST_Formula"
+       }
+      }
+     ],
+     "ParticleType": "Sequence"
+    }
+   }
+  ]
+ },
+ {
   "Key": "DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest",
   "Value": [
    {
@@ -94866,6 +94947,12 @@
        "Type": {
         "Name": "http://schemas.microsoft.com/office/spreadsheetml/2024/workbookCompatibilityVersion:version",
         "Type": "http://schemas.microsoft.com/office/spreadsheetml/2024/workbookCompatibilityVersion:CT_Version"
+       }
+      },
+      {
+       "Type": {
+        "Name": "http://schemas.microsoft.com/office/spreadsheetml/2025/externalCodeService2:externalCodeServiceImageAsInput",
+        "Type": "http://schemas.microsoft.com/office/spreadsheetml/2025/externalCodeService2:CT_ExternalCodeServiceImageAsInput"
        }
       },
       {
